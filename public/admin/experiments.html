@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Туршилт удирдах</title>
+  <link rel="stylesheet" href="/admin/css/experiment.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <h2>Туршилтууд</h2>
+        <p>PhET simulation</p>
+      </div>
+
+      <div id="simButtons" class="sim-buttons">
+        <p class="sidebar-loading">Уншиж байна...</p>
+      </div>
+
+      <div class="sidebar-bottom">
+        <a class="back-link" href="/admin/dashboard.html">← Буцах</a>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="topbar">
+        <h1 id="simTitle"></h1>
+        <div class="btn-exps">
+          <button class="open-btn" onclick="openExperimentModal()">Шинэ туршилт нэмэх</button>
+          <button class="open-btn" onclick="openCurrentSim()">Шинэ tab-аар нээх</button>
+        </div>
+      </div>
+
+      <div class="frame-wrap">
+        <iframe
+          id="simFrame"
+          src=""
+          title="PhET Simulation"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="admin-panel">
+        <h3>Туршилтын жагсаалт</h3>
+        <div id="experimentEditorList" class="editor-list">
+          <p>Уншиж байна...</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="experimentModal" class="modal hidden">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="experimentModalTitle">Шинэ туршилт</h3>
+        <button class="close-btn" onclick="closeExperimentModal()">×</button>
+      </div>
+
+      <div class="modal-body">
+        <label for="experimentTitle">Туршилтын нэр</label>
+        <input
+          type="text"
+          id="experimentTitle"
+          placeholder="Жишээ: Нягт"
+        />
+
+        <label for="experimentUrl" style="margin-top: 14px; display:block;">Туршилтын холбоос</label>
+        <textarea
+          id="experimentUrl"
+          placeholder="Жишээ: https://phet.colorado.edu/sims/html/density/latest/density_all.html"></textarea>
+
+        <p id="experimentMsg" class="msg"></p>
+      </div>
+
+      <div class="modal-footer">
+        <button class="secondary-btn" onclick="closeExperimentModal()">Болих</button>
+        <button class="top-btn" onclick="submitExperiment()">Хадгалах</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/admin/js/admin-auth.js"></script>
+  <script src="/admin/js/experiment.js"></script>
+</body>
+</html>

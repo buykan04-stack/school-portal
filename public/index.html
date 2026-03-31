@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Нэвтрэх</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f6fb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .box {
+      width: 360px;
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.1);
+    }
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      box-sizing: border-box;
+    }
+    button {
+      border: none;
+      background: #123458;
+      color: white;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    .msg {
+      margin-top: 12px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Системд нэвтрэх</h2>
+    <input type="text" id="username" placeholder="Нэвтрэх нэр" />
+    <input type="password" id="password" placeholder="Нууц үг" />
+    <button onclick="login()">Нэвтрэх</button>
+    <div class="msg" id="msg"></div>
+  </div>
+
+  <script>
+    async function login() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const msg = document.getElementById('msg');
+
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await res.json();
+
+        if (!data.success) {
+          msg.textContent = data.message;
+          msg.style.color = 'red';
+          return;
+        }
+
+        localStorage.setItem('user', JSON.stringify(data.user));
+
+        if (data.user.role === 'admin') {
+          window.location.href = '/admin/dashboard.html';
+        } else {
+          window.location.href = '/student/dashboard.html';
+        }
+      } catch (error) {
+        msg.textContent = 'Серверийн алдаа гарлаа';
+        msg.style.color = 'red';
+      }
+    }
+  </script>
+</body>
+</html>
