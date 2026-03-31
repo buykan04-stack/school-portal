@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Туршилт удирдах</title>
+  <link rel="stylesheet" href="/student/css/experiment.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <h2>Туршилтууд</h2>
+        <p>PhET simulation</p>
+      </div>
+
+      <div id="simButtons" class="sim-buttons">
+        <p class="sidebar-loading">Уншиж байна...</p>
+      </div>
+
+      <div class="sidebar-bottom">
+        <a class="back-link" href="/student/dashboard.html">← Буцах</a>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="topbar">
+        <h1 id="simTitle"></h1>
+        <div class="btn-exps">
+          <button class="open-btn" onclick="openCurrentSim()">Шинэ tab-аар нээх</button>
+        </div>
+      </div>
+
+      <div class="frame-wrap">
+        <iframe
+          id="simFrame"
+          src=""
+          title="PhET Simulation"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </main>
+  </div>
+
+  <script src="/student/js/auth.js"></script>
+  <script src="/student/js/experiment.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Хичээлүүд</title>
+  <link rel="stylesheet" href="/admin/css/admin.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <div>
+        <h1 id="classTitle">Анги</h1>
+        <p class="subtext">Тухайн ангийн хичээлүүдийг удирдана</p>
+      </div>
+
+      <div class="top-actions">
+        <button class="top-btn" onclick="openLessonModal()">+ Хичээл нэмэх</button>
+        <a class="secondary-link" href="/admin/dashboard.html">← Буцах</a>
+      </div>
+    </div>
+
+    <div id="lessonList" class="lesson-list">
+      <p>Уншиж байна...</p>
+    </div>
+  </div>
+
+  <!-- Lesson Modal -->
+  <div id="lessonModal" class="modal hidden">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="modalTitle">Шинэ хичээл</h3>
+        <button class="close-btn" onclick="closeLessonModal()">×</button>
+      </div>
+
+      <div class="modal-body">
+        <label for="lessonTitle">Хичээлийн нэр</label>
+        <input type="text" id="lessonTitle" placeholder="Жишээ: Омын хууль" />
+
+        <label for="lessonDescription" style="margin-top: 14px; display:block;">Тайлбар</label>
+        <textarea id="lessonDescription" placeholder="Хичээлийн тайлбар"></textarea>
+
+        <label for="lessonFile" style="margin-top: 14px; display:block;">Файл</label>
+        <input type="file" id="lessonFile" />
+        <p class="subtext">Шинэ хичээл нэмэхэд шууд файл хавсаргаж болно. Засах үед файл сонговол хуучныг солино.</p>
+
+        <p id="lessonMsg" class="msg"></p>
+      </div>
+
+      <div class="modal-footer">
+        <button class="secondary-btn" onclick="closeLessonModal()">Болих</button>
+        <button class="top-btn" onclick="submitLesson()">Хадгалах</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/admin/js/admin-auth.js"></script>
+  <script src="/admin/js/class-lesson.js"></script>
+</body>
+</html>
